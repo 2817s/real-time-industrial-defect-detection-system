@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 
 const menuItems = [
   { name: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
-  { name: "Live Inspection", path: "/inspection", icon: ScanLine },
+  { name: "Image Inspection", path: "/inspection", icon: ScanLine },
   { name: "Analytics", path: "/analytics", icon: BarChart3 },
   { name: "Reports", path: "/reports", icon: FileText },
   { name: "Settings", path: "/settings", icon: Settings },

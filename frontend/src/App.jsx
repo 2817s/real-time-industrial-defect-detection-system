@@ -1,8 +1,9 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+
 import MainLayout from "./components/layout/MainLayout";
 import Analytics from "./pages/Analytics";
 import Dashboard from "./pages/Dashboard";
-import LiveInspection from "./pages/ImageInspection";
+import ImageInspection from "./pages/ImageInspection";
 import Reports from "./pages/Reports";
 import Settings from "./pages/Settings";
 
