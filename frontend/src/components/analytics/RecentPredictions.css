@@ -1,0 +1,35 @@
+.recent-card{
+    background:#18253d;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    padding:28px;
+}
+
+.prediction-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:24px;
+}
+
+.prediction-table th{
+    text-align:left;
+    color:#8ea2c6;
+    font-size:14px;
+    padding:16px 12px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.prediction-table td{
+    padding:18px 12px;
+    color:#ffffff;
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.prediction-table tr:last-child td{
+    border:none;
+}
+
+.completed{
+    color:#22c55e;
+    font-weight:600;
+}

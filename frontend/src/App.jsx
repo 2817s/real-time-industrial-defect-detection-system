@@ -7,6 +7,7 @@ import ImageInspection from "./pages/ImageInspection";
 import Reports from "./pages/Reports";
 import Settings from "./pages/Settings";
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +20,7 @@ function App() {
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/reports" element={<Reports />} />
           <Route path="/settings" element={<Settings />} />
+         
         </Route>
       </Routes>
     </BrowserRouter>

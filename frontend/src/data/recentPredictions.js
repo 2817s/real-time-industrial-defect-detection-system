@@ -1,0 +1,42 @@
+export const recentPredictions = [
+  {
+    image: "steel_001.jpg",
+    defect: "Scratch",
+    confidence: "99.4%",
+    model: "YOLOv8",
+    time: "10:25 AM",
+    status: "Completed",
+  },
+  {
+    image: "steel_002.jpg",
+    defect: "Dent",
+    confidence: "97.8%",
+    model: "YOLOv8",
+    time: "10:18 AM",
+    status: "Completed",
+  },
+  {
+    image: "steel_003.jpg",
+    defect: "Rust",
+    confidence: "96.3%",
+    model: "CNN",
+    time: "10:11 AM",
+    status: "Completed",
+  },
+  {
+    image: "steel_004.jpg",
+    defect: "Crack",
+    confidence: "98.7%",
+    model: "YOLOv9",
+    time: "10:04 AM",
+    status: "Completed",
+  },
+  {
+    image: "steel_005.jpg",
+    defect: "Inclusion",
+    confidence: "95.8%",
+    model: "ResNet",
+    time: "09:57 AM",
+    status: "Completed",
+  },
+];
