@@ -1,0 +1,36 @@
+.report-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: #17263f;
+  border: 1px solid #24344f;
+  border-radius: 18px;
+  padding: 24px;
+}
+
+.report-card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.report-card-content p {
+  margin: 0;
+  color: #8fa2c3;
+  font-size: 14px;
+}
+
+.report-card-content h2 {
+  margin: 6px 0;
+  color: white;
+  font-size: 28px;
+}
+
+.report-card-content span {
+  color: #64748b;
+  font-size: 13px;
+}

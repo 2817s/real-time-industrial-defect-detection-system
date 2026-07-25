@@ -1,0 +1,37 @@
+.model-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.model-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #111d33;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.model-option:hover {
+  border-color: #3b82f6;
+  background: #162544;
+}
+
+.model-option input {
+  accent-color: #3b82f6;
+}
+
+.model-option span {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .model-grid {
+    grid-template-columns: 1fr;
+  }
+}

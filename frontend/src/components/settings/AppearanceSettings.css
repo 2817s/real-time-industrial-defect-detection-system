@@ -1,0 +1,30 @@
+.appearance-options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.theme-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.theme-group label {
+  color: #9fb2d9;
+  font-weight: 500;
+}
+
+.theme-select {
+  background: #111d33;
+  color: white;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 10px;
+  padding: 12px;
+  outline: none;
+  transition: 0.25s;
+}
+
+.theme-select:focus {
+  border-color: #3b82f6;
+}

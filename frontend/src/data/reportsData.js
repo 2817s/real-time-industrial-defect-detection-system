@@ -1,0 +1,42 @@
+export const reportsData = [
+  {
+    id: "RPT-1001",
+    file: "steel_001.jpg",
+    defect: "Scratch",
+    confidence: "99.4%",
+    date: "20 Jul 2026",
+    status: "Completed",
+  },
+  {
+    id: "RPT-1002",
+    file: "steel_002.jpg",
+    defect: "Dent",
+    confidence: "97.8%",
+    date: "20 Jul 2026",
+    status: "Completed",
+  },
+  {
+    id: "RPT-1003",
+    file: "steel_003.jpg",
+    defect: "Rust",
+    confidence: "96.3%",
+    date: "19 Jul 2026",
+    status: "Completed",
+  },
+  {
+    id: "RPT-1004",
+    file: "steel_004.jpg",
+    defect: "Crack",
+    confidence: "98.7%",
+    date: "19 Jul 2026",
+    status: "Completed",
+  },
+  {
+    id: "RPT-1005",
+    file: "steel_005.jpg",
+    defect: "Inclusion",
+    confidence: "95.8%",
+    date: "18 Jul 2026",
+    status: "Completed",
+  },
+];

@@ -1,0 +1,90 @@
+.reports-table-card {
+  margin-top: 2rem;
+  background: #18243b;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  padding: 1.8rem;
+  overflow: hidden;
+}
+
+.reports-table-header {
+  margin-bottom: 1.5rem;
+}
+
+.reports-table-header h2 {
+  color: #ffffff;
+  font-size: 2rem;
+  margin-bottom: 0.35rem;
+}
+
+.reports-table-header p {
+  color: #8fa2c8;
+  font-size: 1rem;
+}
+
+.reports-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.reports-table thead th {
+  text-align: left;
+  color: #8fa2c8;
+  font-weight: 600;
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.reports-table tbody td {
+  padding: 16px;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.reports-table tbody tr {
+  transition: 0.25s ease;
+}
+
+.reports-table tbody tr:hover {
+  background: rgba(59, 130, 246, 0.06);
+}
+
+.status {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status.completed {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+.download-btn {
+  background: #3b82f6;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.download-btn:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(59, 130, 246, 0.35);
+}
+
+@media (max-width: 900px) {
+  .reports-table-card {
+    overflow-x: auto;
+  }
+
+  .reports-table {
+    min-width: 800px;
+  }
+}
