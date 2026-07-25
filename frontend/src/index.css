@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+ @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
   font-family: "Inter", sans-serif;
@@ -348,4 +348,142 @@ a {
   .page-content {
     padding: 22px 16px;
   }
+}
+
+
+
+
+
+
+body.light {
+  background: #f4f7fc;
+  color: #111827;
+}
+
+body.light .navbar,
+body.light .sidebar {
+  background: #ffffff;
+  border-color: #e5e7eb;
+}
+
+body.light .main-section {
+  background: #f4f7fc;
+}
+
+body.light .navbar-search,
+body.light .notification-button,
+body.light .system-status,
+body.light input,
+body.light select,
+body.light textarea,
+body.light .settings-card,
+body.light .reports-table-card,
+body.light .stat-card,
+body.light .analytics-card,
+body.light .chart-card {
+  background: #ffffff;
+  color: #111827;
+  border-color: #d1d5db;
+}
+
+body.light h1,
+body.light h2,
+body.light h3,
+body.light strong,
+body.light label,
+body.light td,
+body.light th {
+  color: #111827;
+}
+
+body.light p,
+body.light span,
+body.light small {
+  color: #6b7280;
+}
+
+body.light .sidebar-link {
+  color: #374151;
+}
+
+body.light .sidebar-link:hover {
+  background: #eef4ff;
+}
+
+body.light .sidebar-link.active {
+  color: white;
+}
+
+body.light .reports-table tbody td {
+  color: #111827;
+}
+
+body.light .reports-table thead th {
+  color: #6b7280;
+}
+
+
+
+:root {
+  --accent: #2563eb;
+}
+
+
+html[data-theme="blue"] {
+  --accent: #2563eb;
+}
+
+
+html[data-theme="orange"] {
+  --accent: #f97316;
+}
+
+
+html[data-theme="green"] {
+  --accent: #22c55e;
+}
+
+
+html[data-theme="purple"] {
+  --accent: #7c3aed;
+}
+
+
+
+.download-btn,
+.save-btn,
+.export-btn,
+.primary-btn,
+button[type="submit"] {
+  background: var(--accent);
+}
+
+.download-btn:hover,
+.save-btn:hover,
+.export-btn:hover,
+.primary-btn:hover,
+button[type="submit"]:hover {
+  filter: brightness(1.08);
+}
+
+.sidebar-link.active::before {
+  background: var(--accent);
+  box-shadow: 0 0 14px var(--accent);
+}
+
+.brand-icon {
+  background: linear-gradient(135deg, var(--accent), #06b6d4);
+}
+
+.user-avatar {
+  background: linear-gradient(135deg, var(--accent), #7c3aed);
+}
+
+.status.completed {
+  color: var(--accent);
+}
+
+.notification-button:focus,
+.navbar-search:focus-within {
+  border-color: var(--accent);
 }

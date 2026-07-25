@@ -1,0 +1,59 @@
+.settings-card {
+  background: #18243b;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  padding: 1.8rem;
+}
+
+.settings-card-header {
+  margin-bottom: 1.5rem;
+}
+
+.settings-card-header h2 {
+  color: #ffffff;
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.settings-card-header p {
+  color: #8fa2c8;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  color: #9fb2d9;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-group input {
+  background: #111d33;
+  border: 1px solid rgba(255,255,255,.08);
+  color: #ffffff;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  transition: 0.25s;
+}
+
+.form-group input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,.15);
+}
+
+@media (max-width: 768px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+}
