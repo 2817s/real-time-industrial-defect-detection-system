@@ -1,4 +1,20 @@
 import api from "./axios";
 
-// Prediction API will be implemented
-// after Member 1 completes Phase 2.
+/**
+ * Upload image for AI prediction
+ * Backend Endpoint:
+ * POST /api/predict
+ */
+
+export const predictDefect = async (imageFile) => {
+  const formData = new FormData();
+  formData.append("image", imageFile);
+
+  const response = await api.post("/predict", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+
+  return response.data;
+};

@@ -1,6 +1,15 @@
 import api from "./axios";
 
+/**
+ * Check Backend Status
+ */
+
 export const checkBackendHealth = async () => {
-  const response = await api.get("/health");
-  return response.data;
+  try {
+    const response = await api.get("/health");
+    return response.data;
+  } catch (error) {
+    console.error("Backend Health Check Failed:", error);
+    throw error;
+  }
 };

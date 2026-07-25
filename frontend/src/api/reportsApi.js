@@ -1,4 +1,12 @@
 import api from "./axios";
 
-// Reports API will be implemented
-// after backend endpoints are available.
+/**
+ * Fetch Inspection History
+ * Backend Endpoint:
+ * GET /api/history
+ */
+
+export const getInspectionHistory = async () => {
+  const response = await api.get("/history");
+  return response.data;
+};

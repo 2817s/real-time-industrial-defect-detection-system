@@ -1,4 +1,12 @@
 import api from "./axios";
 
-// Analytics API will be implemented
-// after backend endpoints are available.
+/**
+ * Fetch Analytics Summary
+ * Backend Endpoint:
+ * GET /api/analytics/summary
+ */
+
+export const getAnalyticsSummary = async () => {
+  const response = await api.get("/analytics/summary");
+  return response.data;
+};
