@@ -1,0 +1,24 @@
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px;
+  margin: 20px 0;
+  border-radius: 14px;
+  background: rgba(239,68,68,.12);
+  border: 1px solid rgba(239,68,68,.25);
+}
+
+.error-icon {
+  font-size: 28px;
+}
+
+.error-message h3 {
+  color: #ef4444;
+  margin-bottom: 6px;
+}
+
+.error-message p {
+  color: #cbd5e1;
+  font-size: 14px;
+}
