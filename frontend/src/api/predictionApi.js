@@ -8,7 +8,9 @@ import api from "./axios";
 
 export const predictDefect = async (imageFile) => {
   const formData = new FormData();
-  formData.append("image", imageFile);
+
+  // Backend expects "file"
+  formData.append("file", imageFile);
 
   const response = await api.post("/predict", formData, {
     headers: {
