@@ -9,4 +9,6 @@ models/
 datasets/ 
 dist/ 
 # Dataset
-dataset/
+# Ignore downloaded and generated datasets
+dataset/NEU-DET/
+dataset/NEU-DET-YOLO/
