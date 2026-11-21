@@ -8,25 +8,38 @@ import {
   YAxis,
 } from "recharts";
 
-import { detectionTrendData } from "../../data/dashboardData";
-
-function TrendChart() {
+function TrendChart({ data = [] }) {
   return (
     <section className="dashboard-panel trend-chart-panel">
       <div className="panel-heading">
         <div>
-          <span className="panel-label">WEEKLY ANALYTICS</span>
+          <span className="panel-label">LAST 7 DAYS</span>
           <h2>Detection Trend</h2>
         </div>
       </div>
 
       <div className="chart-container">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={detectionTrendData}>
+          <AreaChart data={data}>
             <defs>
-              <linearGradient id="defectGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#38bdf8" stopOpacity={0.35} />
-                <stop offset="95%" stopColor="#38bdf8" stopOpacity={0} />
+              <linearGradient
+                id="defectGradient"
+                x1="0"
+                y1="0"
+                x2="0"
+                y2="1"
+              >
+                <stop
+                  offset="5%"
+                  stopColor="#38bdf8"
+                  stopOpacity={0.35}
+                />
+
+                <stop
+                  offset="95%"
+                  stopColor="#38bdf8"
+                  stopOpacity={0}
+                />
               </linearGradient>
             </defs>
 
@@ -44,6 +57,7 @@ function TrendChart() {
             />
 
             <YAxis
+              allowDecimals={false}
               stroke="#64748b"
               tickLine={false}
               axisLine={false}
@@ -61,6 +75,7 @@ function TrendChart() {
             <Area
               type="monotone"
               dataKey="defects"
+              name="Defects Detected"
               stroke="#38bdf8"
               strokeWidth={3}
               fill="url(#defectGradient)"

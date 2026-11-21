@@ -7,7 +7,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
-function DetectionStatus({ result, isAnalyzing }) {
+function DetectionStatus({ result, isAnalyzing, error }) {
   return (
     <section className="dashboard-panel detection-panel">
       <div className="panel-heading">
@@ -33,40 +33,87 @@ function DetectionStatus({ result, isAnalyzing }) {
             <span />
           </div>
         </div>
+      ) : error ? (
+        <div className="result-placeholder">
+          <AlertTriangle size={55} />
+
+          <h3>Analysis Failed</h3>
+
+          <p>{error}</p>
+        </div>
       ) : result ? (
         <>
-          <div className="result-success">
-            <AlertTriangle size={30} />
+          {result.count > 0 ? (
+            <>
+              <div className="result-success">
+                <AlertTriangle size={30} />
 
-            <div>
-              <span>DEFECT DETECTED</span>
-              <h3>{result.defect}</h3>
-            </div>
-          </div>
+                <div>
+                  <span>DEFECTS DETECTED</span>
+                  <h3>{result.count} Detection(s)</h3>
+                </div>
+              </div>
 
-          <div className="confidence-section">
-            <div className="confidence-heading">
-              <span>Confidence score</span>
-              <strong>{result.confidence}%</strong>
-            </div>
+              <div className="confidence-section">
+                <div className="confidence-heading">
+                  <span>Highest confidence score</span>
 
-            <div className="confidence-bar">
-              <span style={{ width: `${result.confidence}%` }} />
+                  <strong>
+                    {Math.max(
+                      ...result.detections.map(
+                        (item) => Number(item.confidencePercentage)
+                      )
+                    ).toFixed(2)}
+                    %
+                  </strong>
+                </div>
+
+                <div className="confidence-bar">
+                  <span
+                    style={{
+                      width: `${
+                        Math.max(
+                          ...result.detections.map(
+                            (item) => Number(item.confidencePercentage)
+                          )
+                        )
+                      }%`,
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div className="result-details">
+                {result.detections.map((detection, index) => (
+                  <div className="result-item" key={index}>
+                    <AlertTriangle size={18} />
+
+                    <div>
+                      <span>Detection {index + 1}</span>
+
+                      <strong>
+                        {detection.displayName} -{" "}
+                        {detection.confidencePercentage}%
+                      </strong>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <div className="result-placeholder">
+              <CheckCircle2 size={55} />
+
+              <h3>No Defects Detected</h3>
+
+              <p>
+                The AI model did not identify any defects in this
+                metal surface image.
+              </p>
             </div>
-          </div>
+          )}
 
           <div className="result-details">
-            <div className="result-item">
-              <AlertTriangle size={18} />
-
-              <div>
-                <span>Severity</span>
-                <strong className="severity-medium">
-                  {result.severity}
-                </strong>
-              </div>
-            </div>
-
             <div className="result-item">
               <Clock3 size={18} />
 
@@ -82,6 +129,15 @@ function DetectionStatus({ result, isAnalyzing }) {
               <div>
                 <span>Detection model</span>
                 <strong>{result.model}</strong>
+              </div>
+            </div>
+
+            <div className="result-item">
+              <ShieldCheck size={18} />
+
+              <div>
+                <span>Total detections</span>
+                <strong>{result.count}</strong>
               </div>
             </div>
           </div>

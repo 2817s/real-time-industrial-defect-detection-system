@@ -11,4 +11,17 @@ dist/
 # Dataset
 # Ignore downloaded and generated datasets
 dataset/NEU-DET/
+dataset/NEU-DET-YOLO/*.pt
+
+# Generated YOLO dataset
 dataset/NEU-DET-YOLO/
+
+# Project environment files
+.env
+.env.*
+!.env.example
+
+# Local model weights and generated files
+/weights/
+/yolov8n.pt
+/project_structure.txt

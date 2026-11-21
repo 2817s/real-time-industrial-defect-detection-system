@@ -7,34 +7,49 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-import { confidenceAnalysisData } from "../../data/analyticsData";
 import "./ConfidenceAnalysis.css";
 
-const ConfidenceAnalysis = () => {
+const ConfidenceAnalysis = ({ data = [] }) => {
   return (
     <div className="analytics-panel">
       <div className="panel-header">
         <h3>Confidence Analysis</h3>
-        <p>AI prediction confidence by defect</p>
+        <p>Average prediction confidence by defect</p>
       </div>
 
       <div className="panel-chart">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
-            data={confidenceAnalysisData}
+            data={data}
             layout="vertical"
-            margin={{ top: 10, right: 20, left: 10, bottom: 10 }}
+            margin={{
+              top: 10,
+              right: 20,
+              left: 10,
+              bottom: 10,
+            }}
           >
-            <XAxis type="number" domain={[90, 100]} hide />
+            <XAxis
+              type="number"
+              domain={[0, 100]}
+              tickFormatter={(value) => `${value}%`}
+            />
+
             <YAxis
               dataKey="defect"
               type="category"
               tick={{ fill: "#CBD5E1", fontSize: 13 }}
               axisLine={false}
               tickLine={false}
+              width={110}
             />
 
-            <Tooltip />
+            <Tooltip
+              formatter={(value) => [
+                `${value}%`,
+                "Average Confidence",
+              ]}
+            />
 
             <Bar
               dataKey="confidence"

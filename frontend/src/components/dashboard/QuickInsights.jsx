@@ -1,36 +1,34 @@
 import {
   Brain,
-  Clock3,
   Gauge,
   Trophy,
+  Database,
 } from "lucide-react";
 
-import { dashboardStats } from "../../data/dashboardStats";
+function QuickInsights({ stats }) {
+  const insights = [
+    {
+      title: "Detection Model",
+      value: "YOLOv8n - 800px",
+      icon: Brain,
+    },
+    {
+      title: "Average Confidence",
+      value: `${stats.average_confidence}%`,
+      icon: Gauge,
+    },
+    {
+      title: "Highest Confidence",
+      value: `${stats.highest_confidence}%`,
+      icon: Trophy,
+    },
+    {
+      title: "Total Inspections",
+      value: stats.images_analyzed,
+      icon: Database,
+    },
+  ];
 
-const insights = [
-  {
-    title: "Best Model",
-    value: "YOLOv8",
-    icon: Brain,
-  },
-  {
-    title: "Avg Processing",
-    value: `${dashboardStats.averageProcessingTime} sec`,
-    icon: Clock3,
-  },
-  {
-    title: "Highest Confidence",
-    value: `${dashboardStats.highestConfidence}%`,
-    icon: Trophy,
-  },
-  {
-    title: "Last Inspection",
-    value: dashboardStats.lastInspection,
-    icon: Gauge,
-  },
-];
-
-function QuickInsights() {
   return (
     <section className="dashboard-panel quick-insights-panel">
       <div className="panel-heading">

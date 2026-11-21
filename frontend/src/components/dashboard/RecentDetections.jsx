@@ -1,39 +1,39 @@
-const recentDetections = [
-  {
-    id: 1,
-    image: "steel_001.jpg",
-    defect: "Scratches",
-    confidence: "98.4%",
-    time: "10:21 AM",
-    status: "Completed",
-  },
-  {
-    id: 2,
-    image: "steel_002.jpg",
-    defect: "Pitted",
-    confidence: "95.8%",
-    time: "10:16 AM",
-    status: "Completed",
-  },
-  {
-    id: 3,
-    image: "steel_003.jpg",
-    defect: "Inclusion",
-    confidence: "93.2%",
-    time: "10:08 AM",
-    status: "Completed",
-  },
-  {
-    id: 4,
-    image: "steel_004.jpg",
-    defect: "Rolled Scale",
-    confidence: "91.6%",
-    time: "09:57 AM",
-    status: "Completed",
-  },
-];
+function RecentDetections({ data = [] }) {
+  function formatTime(timestamp) {
+    if (!timestamp) return "--";
 
-function RecentDetections() {
+    return new Date(timestamp).toLocaleString("en-IN", {
+      day: "2-digit",
+      month: "short",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  }
+
+  const rows = data.flatMap((record, recordIndex) => {
+    const detections = record.detections || [];
+
+    if (detections.length === 0) {
+      return [{
+        id: `${record.filename}-${recordIndex}`,
+        image: record.filename,
+        defect: "No defects",
+        confidence: "--",
+        time: formatTime(record.created_at),
+      }];
+    }
+
+    return detections.map((detection, detectionIndex) => ({
+      id: `${record.filename}-${recordIndex}-${detectionIndex}`,
+      image: record.filename,
+      defect: detection.class_name
+        .replaceAll("_", " ")
+        .replace(/\b\w/g, (letter) => letter.toUpperCase()),
+      confidence: `${(detection.confidence * 100).toFixed(2)}%`,
+      time: formatTime(record.created_at),
+    }));
+  });
+
   return (
     <section className="dashboard-panel recent-detections-panel">
       <div className="panel-heading">
@@ -56,20 +56,26 @@ function RecentDetections() {
           </thead>
 
           <tbody>
-            {recentDetections.map((item) => (
-              <tr key={item.id}>
-                <td>{item.image}</td>
-                <td>{item.defect}</td>
-                <td>{item.confidence}</td>
-                <td>{item.time}</td>
-                <td>
-                  <span className="table-status">
-                    <span className="health-dot" />
-                    {item.status}
-                  </span>
-                </td>
+            {rows.length > 0 ? (
+              rows.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.image}</td>
+                  <td>{item.defect}</td>
+                  <td>{item.confidence}</td>
+                  <td>{item.time}</td>
+                  <td>
+                    <span className="table-status">
+                      <span className="health-dot" />
+                      Completed
+                    </span>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="5">No inspection records available.</td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>

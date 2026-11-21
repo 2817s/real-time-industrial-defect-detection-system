@@ -4,9 +4,9 @@ import {
   Cell,
   Tooltip,
   ResponsiveContainer,
+  Legend,
 } from "recharts";
 
-import { defectDistributionData } from "../../data/analyticsData";
 import "./DefectDistribution.css";
 
 const COLORS = [
@@ -15,28 +15,29 @@ const COLORS = [
   "#f97316",
   "#a855f7",
   "#64748b",
+  "#ec4899",
 ];
 
-const DefectDistribution = () => {
+const DefectDistribution = ({ data = [] }) => {
   return (
     <div className="analytics-panel">
       <div className="panel-header">
         <h3>Defect Distribution</h3>
-        <p>Most detected defect types</p>
+        <p>Actual detected defect categories</p>
       </div>
 
       <div className="panel-chart">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
-              data={defectDistributionData}
+              data={data}
               dataKey="value"
               nameKey="name"
               innerRadius={70}
               outerRadius={100}
               paddingAngle={4}
             >
-              {defectDistributionData.map((entry, index) => (
+              {data.map((entry, index) => (
                 <Cell
                   key={entry.name}
                   fill={COLORS[index % COLORS.length]}
@@ -44,7 +45,17 @@ const DefectDistribution = () => {
               ))}
             </Pie>
 
-            <Tooltip />
+            <Tooltip
+              formatter={(value) => [
+                `${value} detections`,
+                "Count",
+              ]}
+            />
+
+            <Legend
+              verticalAlign="bottom"
+              iconType="circle"
+            />
           </PieChart>
         </ResponsiveContainer>
       </div>

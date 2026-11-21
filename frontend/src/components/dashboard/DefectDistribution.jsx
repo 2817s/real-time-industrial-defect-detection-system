@@ -7,18 +7,16 @@ import {
   Tooltip,
 } from "recharts";
 
-import { defectDistributionData } from "../../data/dashboardData";
-import { dashboardStats } from "../../data/dashboardStats";
-
 const COLORS = [
   "#38BDF8",
   "#F59E0B",
   "#A855F7",
   "#22C55E",
   "#EF4444",
+  "#EC4899",
 ];
 
-function DefectDistribution() {
+function DefectDistribution({ data = [], total = 0 }) {
   return (
     <section className="dashboard-panel defect-distribution-panel">
       <div className="panel-heading">
@@ -32,7 +30,7 @@ function DefectDistribution() {
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
-              data={defectDistributionData}
+              data={data}
               dataKey="value"
               nameKey="name"
               cx="50%"
@@ -41,7 +39,7 @@ function DefectDistribution() {
               outerRadius={105}
               paddingAngle={4}
             >
-              {defectDistributionData.map((item, index) => (
+              {data.map((item, index) => (
                 <Cell
                   key={item.name}
                   fill={COLORS[index % COLORS.length]}
@@ -58,7 +56,7 @@ function DefectDistribution() {
               fontSize="34"
               fontWeight="700"
             >
-              {dashboardStats.totalDefects}
+              {total}
             </text>
 
             <text
@@ -73,7 +71,10 @@ function DefectDistribution() {
             </text>
 
             <Tooltip
-              formatter={(value) => [`${value}%`, "Share"]}
+              formatter={(value, name) => [
+                `${value} detections`,
+                name,
+              ]}
               contentStyle={{
                 background: "#0f172a",
                 border: "1px solid rgba(148, 163, 184, 0.15)",

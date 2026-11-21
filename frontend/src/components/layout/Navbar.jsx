@@ -18,12 +18,21 @@ function Navbar() {
           <span></span>
         </button>
 
-        <div className="user-profile">
+        <div className="user-profile mukt-profile">
           <div className="user-avatar">MP</div>
 
           <div>
             <strong>Mukt Patel</strong>
             <p>Frontend Engineer</p>
+          </div>
+        </div>
+
+        <div className="user-profile dhruv-profile">
+          <div className="user-avatar">DP</div>
+
+          <div>
+            <strong>Dhruv Patel</strong>
+            <p>ML & Backend Engineer</p>
           </div>
         </div>
       </div>

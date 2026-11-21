@@ -6,11 +6,14 @@ import {
   ScanSearch,
   UploadCloud,
 } from "lucide-react";
+
 import { useEffect, useRef, useState } from "react";
 
 function UploadPreview({ onAnalyze, onReset, isAnalyzing }) {
   const [preview, setPreview] = useState(null);
   const [fileInfo, setFileInfo] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+
   const fileInputRef = useRef(null);
 
   useEffect(() => {
@@ -35,6 +38,7 @@ function UploadPreview({ onAnalyze, onReset, isAnalyzing }) {
       URL.revokeObjectURL(preview);
     }
 
+    setSelectedFile(file);
     setPreview(URL.createObjectURL(file));
 
     setFileInfo({
@@ -62,7 +66,12 @@ function UploadPreview({ onAnalyze, onReset, isAnalyzing }) {
 
     setPreview(null);
     setFileInfo(null);
-    fileInputRef.current.value = "";
+    setSelectedFile(null);
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+
     onReset();
   }
 
@@ -81,7 +90,9 @@ function UploadPreview({ onAnalyze, onReset, isAnalyzing }) {
         className="upload-dropzone"
         onDragOver={(event) => event.preventDefault()}
         onDrop={handleDrop}
-        onClick={() => !preview && fileInputRef.current.click()}
+        onClick={() =>
+          !preview && !isAnalyzing && fileInputRef.current?.click()
+        }
       >
         {preview ? (
           <div className="preview-container">
@@ -152,7 +163,7 @@ function UploadPreview({ onAnalyze, onReset, isAnalyzing }) {
         <button
           className="secondary-button"
           type="button"
-          onClick={() => fileInputRef.current.click()}
+          onClick={() => fileInputRef.current?.click()}
           disabled={isAnalyzing}
         >
           <ImagePlus size={17} />
@@ -162,8 +173,8 @@ function UploadPreview({ onAnalyze, onReset, isAnalyzing }) {
         <button
           className="primary-button"
           type="button"
-          disabled={!preview || isAnalyzing}
-          onClick={onAnalyze}
+          disabled={!selectedFile || isAnalyzing}
+          onClick={() => onAnalyze(selectedFile)}
         >
           {isAnalyzing ? (
             <>

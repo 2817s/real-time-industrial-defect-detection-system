@@ -8,10 +8,15 @@ import {
   YAxis,
 } from "recharts";
 
-import { detectionTrendData } from "../../data/analyticsData";
 import "./DetectionTrendChart.css";
 
-const DetectionTrendChart = () => {
+const DetectionTrendChart = ({ data = [] }) => {
+  const chartData = data.map((item) => ({
+    day: item.day,
+    inspections: item.analyzed,
+    defects: item.defects,
+  }));
+
   return (
     <div className="detection-trend-card">
       <div className="detection-trend-header">
@@ -25,7 +30,7 @@ const DetectionTrendChart = () => {
 
       <div className="detection-trend-chart">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={detectionTrendData}>
+          <AreaChart data={chartData}>
             <defs>
               <linearGradient
                 id="inspectionGradient"
@@ -64,6 +69,7 @@ const DetectionTrendChart = () => {
             />
 
             <YAxis
+              allowDecimals={false}
               stroke="#64748b"
               tickLine={false}
               axisLine={false}
@@ -81,6 +87,7 @@ const DetectionTrendChart = () => {
             <Area
               type="monotone"
               dataKey="inspections"
+              name="Inspections"
               stroke="#38bdf8"
               strokeWidth={3}
               fill="url(#inspectionGradient)"
@@ -89,6 +96,7 @@ const DetectionTrendChart = () => {
             <Area
               type="monotone"
               dataKey="defects"
+              name="Defects"
               stroke="#f97316"
               strokeWidth={3}
               fill="url(#defectGradient)"

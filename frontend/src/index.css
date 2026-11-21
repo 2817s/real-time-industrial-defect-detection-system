@@ -247,6 +247,13 @@ a {
   display: flex;
   align-items: center;
   gap: 11px;
+  padding: 6px 9px;
+  border-radius: 12px;
+  transition: background 0.25s ease;
+}
+
+.user-profile:hover {
+  background: rgba(148, 163, 184, 0.07);
 }
 
 .user-avatar {
@@ -258,17 +265,60 @@ a {
   color: white;
   font-size: 13px;
   font-weight: 700;
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  transition: box-shadow 0.25s ease;
+}
+
+/* Mukt Patel - Purple Gradient */
+.mukt-profile .user-avatar {
+  background: linear-gradient(135deg, #7c3aed, #ec4899);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.25);
+}
+
+.mukt-profile:hover .user-avatar {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+}
+
+/* Dhruv Patel - Cyan Blue Gradient */
+.dhruv-profile .user-avatar {
+  background: linear-gradient(135deg, #0891b2, #2563eb);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.25);
+}
+
+.dhruv-profile:hover .user-avatar {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
 }
 
 .user-profile strong {
   font-size: 13px;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.mukt-profile strong {
+  background: linear-gradient(90deg, #c4b5fd, #f9a8d4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dhruv-profile strong {
+  background: linear-gradient(90deg, #67e8f9, #93c5fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .user-profile p {
   margin-top: 4px;
-  color: #64748b;
   font-size: 11px;
+}
+
+.mukt-profile p {
+  color: #c4b5fd;
+}
+
+.dhruv-profile p {
+  color: #67e8f9;
 }
 
 .page-content {

@@ -8,27 +8,47 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const data = [
-  { model: "YOLOv8", accuracy: 99.1 },
-  { model: "YOLOv9", accuracy: 98.8 },
-  { model: "CNN", accuracy: 96.7 },
-  { model: "ResNet", accuracy: 95.4 },
-];
+const ModelPerformance = ({ metrics }) => {
+  const data = [
+    {
+      metric: "mAP@50",
+      value: metrics.map50,
+    },
+    {
+      metric: "mAP@50–95",
+      value: metrics.map50_95,
+    },
+  ];
 
-const ModelPerformance = () => {
   return (
     <div className="analytics-card chart-card">
       <h2>Model Performance</h2>
-      <p>Accuracy comparison</p>
+      <p>Experiment 3 - YOLOv8n validation metrics</p>
 
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#22324c" />
-          <XAxis dataKey="model" stroke="#8FA2C3" />
-          <YAxis stroke="#8FA2C3" />
-          <Tooltip />
+          <CartesianGrid
+            strokeDasharray="3 3"
+            stroke="#22324c"
+          />
+
+          <XAxis
+            dataKey="metric"
+            stroke="#8FA2C3"
+          />
+
+          <YAxis
+            domain={[0, 100]}
+            stroke="#8FA2C3"
+            tickFormatter={(value) => `${value}%`}
+          />
+
+          <Tooltip
+            formatter={(value) => [`${value}%`, "Score"]}
+          />
+
           <Bar
-            dataKey="accuracy"
+            dataKey="value"
             fill="#38bdf8"
             radius={[6, 6, 0, 0]}
           />
